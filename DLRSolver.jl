@@ -101,7 +101,11 @@ end
 
 function qrGramSchmidt(A::Array{Float64,2})
     XNew,S = qr(A);
-    X = XNew[:,1:size(S,2)]
+    XNew = Matrix(XNew);
+    S = Matrix(S);
+    r = size(S,2);
+    X = XNew[:,1:r]
+    S = S[1:r,1:r]
     return X,S;
     N = size(A,1);
     r = size(A,2);
